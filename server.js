@@ -6,7 +6,7 @@ const path = require('path');
 const app = express();
 const port = process.env.PORT || 3000;
 
-const apiKey = "54a75ea3f328e90585fc462673852e22";
+const apiKey = "YOUR_API_KEY_HERE";
 
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -16,7 +16,7 @@ app.use(express.urlencoded({ extended: true }));
 app.post('/getWeather', async (req, res) => {
     try {
         const city = req.body.city;
-        const url = `YOUR_API_URL_HERE`;
+        const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
 
         const response = await axios.get(url);
         const data = response.data;
